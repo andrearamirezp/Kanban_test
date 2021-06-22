@@ -63,6 +63,7 @@
     <button id="removeElement">Remove "My Task Test"</button>
 
     <script src="../dist/jkanban.js"></script>
+    <script src="functions.js"></script>
     <script>
       var KanbanTest = new jKanban({
         element: "#myKanban",
@@ -72,15 +73,22 @@
           enabled: true,
         },
         click: function(el) {
-          console.log("Trigger on all items click!");
+          // console.log("Trigger on all items click!");
+          hacer_click();
         },
         context: function(el, e) {
-          console.log("Trigger on all items right-click!");
+          // console.log("Trigger on all items right-click!");
+          click_derecho();
         },
         dropEl: function(el, target, source, sibling){
-          console.log(target.parentElement.getAttribute('data-id'));
-          console.log(el, target, source, sibling)
+          // console.log(target.parentElement.getAttribute('data-id'));
+          // console.log(el, target, source, sibling)
+          me_arrastraron();
         },
+        dragBoard: function (el, source) {
+          console.log(el, source)
+          arrastrar_tablero();
+        }, 
         buttonClick: function(el, boardId) {
           console.log(el);
           console.log(boardId);
@@ -131,9 +139,9 @@
               },
               {
                 title: "Try Click This!",
-                click: function(el) {
-                  alert("click");
-                },
+                // click: function(el) {
+                //   alert("click");
+                // },
                 context: function(el, e){
                   alert("right-click at (" + `${e.pageX}` + "," + `${e.pageX}` + ")")
                 },
