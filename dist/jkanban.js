@@ -45,7 +45,7 @@ var dragula = require('dragula');
       responsive: '700',
       responsivePercentage: false,
       boards: [],
-      dragBoards: true,
+      dragBoards: false,
       dragItems: true, //whether can drag cards or not, useful when set permissions on it.
       itemAddOptions: __DEFAULT_ITEM_ADD_OPTIONS,
       itemHandleOptions: __DEFAULT_ITEM_HANDLE_OPTIONS,
@@ -206,6 +206,7 @@ var dragula = require('dragula');
         })
       }
       nodeItem.innerHTML = __buildItemCard(element)
+
       //add function
       nodeItem.clickfn = element.click
       nodeItem.contextfn = element.context;
@@ -321,6 +322,7 @@ var dragula = require('dragula');
             })
           }
           nodeItem.innerHTML = __buildItemCard(itemKanban)
+          
           //add function
           nodeItem.clickfn = itemKanban.click
           nodeItem.contextfn = itemKanban.context
@@ -335,6 +337,7 @@ var dragula = require('dragula');
             nodeItem.style.cursor = 'default'
           }
           contentBoard.appendChild(nodeItem)
+          
         }
         //footer board
         var footerBoard = document.createElement('footer')
@@ -395,6 +398,7 @@ var dragula = require('dragula');
         nodeItem = self.element.querySelector('[data-eid="' + el + '"]')
       }
       nodeItem.innerHTML = __buildItemCard(element)
+      
       // add function
       nodeItem.clickfn = element.click
       nodeItem.contextfn = element.context
@@ -608,8 +612,11 @@ var dragula = require('dragula');
                   customItemLayout = '';
               }
 
-              result = '<div class=\'item_handle ' + customCssHandler + '\'><i class=\'item_handle ' + customCssIconHandler + '\'></i></div><div>' + result + '</div>'
-          } else {
+              result = '<div class=\'item_handle ' + customCssHandler + '\'><i class=\'item_handle ' + customCssIconHandler + 
+              '\'></i></div><div>' + result + 
+              '</div><div class="div-button"><button id="botonT" class="custom-button">Delete</button><a id="milink" href="https://www.google.com/">here</a></div> <div><select><option value="value1">Option 1</option><option value="value2">Option 2</option></select></div> '
+              
+            } else {
               result = '<div> ' + self.options.itemHandleOptions.customHandler.replace(/%([^%]+)%/g, (match, key) => 
                       { return item[key] !== undefined ? item[key] : '' }) + ' </div>'
               return result
@@ -618,7 +625,6 @@ var dragula = require('dragula');
 
       return result
   }
-
     //init plugin
     this.init()
   }
@@ -1653,6 +1659,12 @@ function drainQueue() {
     runClearTimeout(timeout);
 }
 
+
+
+// var HacerClickBtn = document.getElementById("botonT");
+// HacerClickBtn .addEventListener("click", function() {
+//         alert("Seguro me quieres eliminar?")
+//       });
 process.nextTick = function (fun) {
     var args = new Array(arguments.length - 1);
     if (arguments.length > 1) {
