@@ -209,6 +209,44 @@
         }  
       }
 
+      // funcion para Cargar Componentes al campo <select>
+      function cargar_componentes() {
+        var array = ["Polines", "Chutes", "Raspadores"];
+
+        // Ordena el Array Alfabeticamente
+        array.sort();
+
+        addOptions("componente", array);
+      }
+
+      function addOptions(domElement, array){
+        let selectComponente = document.getElementsByName(domElement);
+
+        for (let i=0; i<selectComponente.length; i++){
+
+          for (value in array){
+          var option = document.createElement("option");
+
+          option.text = array[value];
+          selectComponente[i].add(option);
+          }
+        }
+          
+        
+        
+      }
+      
+
+
+
+      // for (let i =0 ; i<selectComponente.length; i++){
+      //   if(links[i].id == "milink"){
+      //     links[i].addEventListener("click", function(){
+      //       window.location.href = "http://www.w3schools.com";
+      //     })
+      //   }  
+      // }
+
       
       // var toDoButton = document.getElementById("addToDo");
       // toDoButton.addEventListener("click", function() {

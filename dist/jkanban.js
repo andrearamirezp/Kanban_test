@@ -79,6 +79,7 @@ var dragula = require('dragula');
     this.init = function () {
       //set initial boards
       __setBoard()
+      cargar_componentes()
       //set drag with dragula
       if (window.innerWidth > self.options.responsive) {
         //Init Drag Board
@@ -614,9 +615,9 @@ var dragula = require('dragula');
 
               result = '<div class=\'item_handle ' + customCssHandler + '\'><i class=\'item_handle ' + customCssIconHandler + 
               '\'></i></div><div>' + result + 
-              '</div><div class="div-button"><button id="botonT" class="custom-button">Delete</button><a id="milink" href="https://www.google.com/">here</a></div> <div><select><option value="value1">Option 1</option><option value="value2">Option 2</option></select></div> '
-              
-            } else {
+              '</div><div class="div-button"><button id="botonT" class="custom-button">Delete</button><a id="milink" href="https://www.google.com/">here</a></div> <div><select name="componente"><option>Seleccione un componente</option></select></div> '
+            } 
+            else {
               result = '<div> ' + self.options.itemHandleOptions.customHandler.replace(/%([^%]+)%/g, (match, key) => 
                       { return item[key] !== undefined ? item[key] : '' }) + ' </div>'
               return result
@@ -1659,12 +1660,6 @@ function drainQueue() {
     runClearTimeout(timeout);
 }
 
-
-
-// var HacerClickBtn = document.getElementById("botonT");
-// HacerClickBtn .addEventListener("click", function() {
-//         alert("Seguro me quieres eliminar?")
-//       });
 process.nextTick = function (fun) {
     var args = new Array(arguments.length - 1);
     if (arguments.length > 1) {
